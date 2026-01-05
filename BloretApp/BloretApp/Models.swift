@@ -43,3 +43,51 @@ struct RealTimeStatus: Codable {
     let playersMax: Int
     let motdClean: [String]?
 }
+
+// MARK: - AI 聊天模型
+
+struct ChatMessage: Identifiable, Equatable {
+    let id = UUID()
+    let role: MessageRole
+    let content: String
+    var isError: Bool = false
+}
+
+enum MessageRole: String, Codable {
+    case user
+    case assistant
+}
+
+// MARK: - API 请求结构
+struct AIRequest: Codable {
+    let pause: Bool
+    let model: String
+    let OauthApp: OauthAppInfo
+    let user: AIUserInfo
+    let context: [AIContextItem]
+}
+
+struct OauthAppInfo: Codable {
+    let app_id: String
+    let app_secret: String
+}
+
+struct AIUserInfo: Codable {
+    let name: String
+    let token: String
+}
+
+struct AIContextItem: Codable {
+    let role: String
+    let content: String
+}
+
+// MARK: - API 响应结构
+struct AIResponse: Codable {
+    let status: Bool
+    let pause: Bool?
+    let content: String?
+    let connectionId: String?
+    let message: String?
+    let error: String?
+}

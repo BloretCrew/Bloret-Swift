@@ -26,3 +26,5 @@ struct BloretApp: App {
         }
     }
 }
+
+// OauthApp Secret: caFzuv-havqe3-hipcug
