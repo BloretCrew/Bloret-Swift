@@ -1,6 +1,7 @@
 import SwiftUI
 import Combine // ✅ 修复: 必须引入这个框架才能使用 ObservableObject
 import AuthenticationServices
+import LocalAuthentication // ✅ 新增: 用于 Face ID/Touch ID
 
 // MARK: - 用户模型
 struct BloretUser: Codable {
@@ -85,6 +86,46 @@ class AuthManager: NSObject, ObservableObject {
         }.resume()
     }
     
+    // 新增: 生物识别验证 (Face ID / Touch ID)
+    func authenticateUser(completion: @escaping (Bool) -> Void) {
+        let context = LAContext()
+        var error: NSError?
+        
+        // ✅ 修复: 使用 .deviceOwnerAuthenticationWithBiometrics 强制优先使用 Face ID
+        // 如果只用 .deviceOwnerAuthentication，系统可能会直接弹密码框
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "需要验证身份以批准网页端登录"
+            
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                DispatchQueue.main.async {
+                    if success {
+                        completion(true)
+                    } else {
+                        // 如果 Face ID 失败（比如多次错误），尝试回退到密码验证
+                        // 注意：如果不想回退到密码，可以直接 completion(false)
+                        self.authenticateWithPasscode(context: context, completion: completion)
+                    }
+                }
+            }
+        } else {
+            // 如果设备根本不支持生物识别（或者没有设置 Face ID），则尝试直接用密码
+            authenticateWithPasscode(context: context, completion: completion)
+        }
+    }
+    
+    // 辅助方法：密码验证回退
+    private func authenticateWithPasscode(context: LAContext, completion: @escaping (Bool) -> Void) {
+        var error: NSError?
+        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "无法识别 Face ID，请输入密码") { success, _ in
+                DispatchQueue.main.async { completion(success) }
+            }
+        } else {
+            // 既没有 Face ID 也没有密码（模拟器或未设置密码），直接通过或失败
+            DispatchQueue.main.async { completion(true) }
+        }
+    }
+
     // 响应请求 (允许或拒绝)
     func respondToRequest(request: TwoFARequestInfo, action: String) {
         guard let user = currentUser else { return }

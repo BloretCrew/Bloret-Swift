@@ -75,9 +75,18 @@ struct HomeView: View {
                 title: Text("尝试登录请求"),
                 message: Text("检测到网页端登录请求\nIP: \(request.ip)\n设备: \(request.device)"),
                 primaryButton: .default(Text("允许登录"), action: {
-                    authManager.respondToRequest(request: request, action: "approve")
+                    // ✅ 修改: 先进行 Face ID 验证，成功后再发送 approve
+                    authManager.authenticateUser { success in
+                        if success {
+                            authManager.respondToRequest(request: request, action: "approve")
+                        } else {
+                            // 验证失败（用户取消或 FaceID 错误），不做任何操作或提示错误
+                            // 由于 Alert 此时已关闭，如果需要，可以在这里设置一个错误状态弹窗
+                        }
+                    }
                 }),
                 secondaryButton: .destructive(Text("拒绝"), action: {
+                    // 拒绝通常不需要生物识别验证
                     authManager.respondToRequest(request: request, action: "reject")
                 })
             )
