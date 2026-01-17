@@ -100,19 +100,7 @@
         },
         {
           "kind" : "file",
-          "name" : "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWidget/AppIntent.swift"
-        },
-        {
-          "kind" : "file",
           "name" : "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWidget/BloretWidget.swift"
-        },
-        {
-          "kind" : "file",
-          "name" : "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWidget/BloretWidgetBundle.swift"
-        },
-        {
-          "kind" : "file",
-          "name" : "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWidget/BloretWidgetControl.swift"
         },
         {
           "kind" : "file",
@@ -162,10 +150,7 @@
         "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretWatch_Watch_AppTests.swift.o",
         "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretWatch_Watch_AppUITests.swift.o",
         "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretWatch_Watch_AppUITestsLaunchTests.swift.o",
-        "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/AppIntent.swift.o",
         "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretWidget.swift.o",
-        "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretWidgetBundle.swift.o",
-        "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretWidgetControl.swift.o",
         "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BlorikoView.swift.o",
         "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/HomeView.swift.o",
         "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/Models.swift.o",
@@ -258,10 +243,7 @@
         "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWatch Watch AppTests/BloretWatch_Watch_AppTests.swift",
         "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWatch Watch AppUITests/BloretWatch_Watch_AppUITests.swift",
         "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWatch Watch AppUITests/BloretWatch_Watch_AppUITestsLaunchTests.swift",
-        "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWidget/AppIntent.swift",
         "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWidget/BloretWidget.swift",
-        "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWidget/BloretWidgetBundle.swift",
-        "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWidget/BloretWidgetControl.swift",
         "/Volumes/Detrital/Work/git/Bloret-Swift/BlorikoView.swift",
         "/Volumes/Detrital/Work/git/Bloret-Swift/HomeView.swift",
         "/Volumes/Detrital/Work/git/Bloret-Swift/Models.swift",
@@ -301,10 +283,7 @@
       "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWatch Watch AppTests/BloretWatch_Watch_AppTests.swift",
       "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWatch Watch AppUITests/BloretWatch_Watch_AppUITests.swift",
       "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWatch Watch AppUITests/BloretWatch_Watch_AppUITestsLaunchTests.swift",
-      "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWidget/AppIntent.swift",
       "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWidget/BloretWidget.swift",
-      "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWidget/BloretWidgetBundle.swift",
-      "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWidget/BloretWidgetControl.swift",
       "/Volumes/Detrital/Work/git/Bloret-Swift/BlorikoView.swift",
       "/Volumes/Detrital/Work/git/Bloret-Swift/HomeView.swift",
       "/Volumes/Detrital/Work/git/Bloret-Swift/Models.swift",
@@ -474,19 +453,7 @@
         },
         {
           "kind" : "file",
-          "name" : "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWidget/AppIntent.swift"
-        },
-        {
-          "kind" : "file",
           "name" : "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWidget/BloretWidget.swift"
-        },
-        {
-          "kind" : "file",
-          "name" : "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWidget/BloretWidgetBundle.swift"
-        },
-        {
-          "kind" : "file",
-          "name" : "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretWidget/BloretWidgetControl.swift"
         },
         {
           "kind" : "file",

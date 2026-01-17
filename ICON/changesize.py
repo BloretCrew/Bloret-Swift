@@ -1,7 +1,7 @@
 from PIL import Image
 import os
 
-def resize_app_icon(input_path, output_path, size=(1024, 1024)):
+def resize_app_icon(input_path, output_path, size=(100, 100)):
     try:
         with Image.open(input_path) as img:
             # 转换为带有 Alpha 通道的 RGBA 模式，确保兼容性
@@ -21,7 +21,7 @@ def resize_app_icon(input_path, output_path, size=(1024, 1024)):
 
 # --- 使用示例 ---
 # 请将下面的文件名替换为你实际的文件名
-input_file = "Bloret-watchOS-Default-1088x1088@1x.png"
-output_file = "Bloret-watchOS-Default-1024x1024@1x.png"
+input_file = "bloret.png"
+output_file = "BloretServer.png"
 
 resize_app_icon(input_file, output_file)
