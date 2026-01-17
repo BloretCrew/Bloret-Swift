@@ -91,3 +91,24 @@ struct AIResponse: Codable {
     let message: String?
     let error: String?
 }
+
+// MARK: - 2FA 验证模型
+
+struct TwoFAPendingResponse: Codable {
+    let success: Bool
+    let requests: [TwoFARequestInfo]
+}
+
+struct TwoFARequestInfo: Codable, Identifiable {
+    var id: String { requestId } // 满足 Identifiable 协议，用于弹窗
+    let requestId: String
+    let timestamp: Int64
+    let ip: String
+    let device: String
+    let location: String
+}
+
+struct TwoFAActionResponse: Codable {
+    let success: Bool
+    let error: String?
+}

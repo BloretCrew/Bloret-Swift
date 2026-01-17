@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:Bloret-Swift}",
+            "name": "Debug Bloret",
+            "target": "Bloret",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug Bloret"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:Bloret-Swift}",
+            "name": "Release Bloret",
+            "target": "Bloret",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release Bloret"
+        }
+    ]
+}

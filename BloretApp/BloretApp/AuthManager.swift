@@ -25,11 +25,117 @@ class AuthManager: NSObject, ObservableObject {
     
     private var authSession: ASWebAuthenticationSession?
     
+    // 2FA 相关状态
+    @Published var pendingRequest: TwoFARequestInfo? // 当前待处理的请求
+    private var pollingTimer: Timer?
+    private var processedRequestIds: Set<String> = [] // 记录已处理的 ID，防止重复弹窗
+    
     override init() {
         super.init()
         loadUser()
     }
     
+    // MARK: - 2FA 轮询逻辑
+    
+    private func startPolling() {
+        stopPolling() // 防止重复开启
+        guard currentUser != nil else { return }
+        
+        // 每 5 秒轮询一次
+        pollingTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { [weak self] _ in
+            self?.checkPending2FARequests()
+        }
+    }
+    
+    private func stopPolling() {
+        pollingTimer?.invalidate()
+        pollingTimer = nil
+    }
+    
+    // 检查是否有待处理请求
+    private func checkPending2FARequests() {
+        guard let user = currentUser else { return }
+        
+        // 文档 API: http://pcfs.eno.ink:20000/api/2fa/app/pending
+        var components = URLComponents(string: "http://pcfs.eno.ink:20000/api/2fa/app/pending")
+        components?.queryItems = [
+            URLQueryItem(name: "username", value: user.username),
+            URLQueryItem(name: "app_id", value: appId),
+            URLQueryItem(name: "token", value: user.apptoken)
+        ]
+        
+        guard let url = components?.url else { return }
+        
+        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            guard let self = self, let data = data, error == nil else { return }
+            
+            do {
+                let response = try JSONDecoder().decode(TwoFAPendingResponse.self, from: data)
+                if response.success, let request = response.requests.first {
+                    DispatchQueue.main.async {
+                        // 如果存在请求，且未处理过，且当前没有正在显示的弹窗
+                        if !self.processedRequestIds.contains(request.requestId) && self.pendingRequest == nil {
+                            self.pendingRequest = request
+                        }
+                    }
+                }
+            } catch {
+                print("2FA Polling Error: \(error)")
+            }
+        }.resume()
+    }
+    
+    // 响应请求 (允许或拒绝)
+    func respondToRequest(request: TwoFARequestInfo, action: String) {
+        guard let user = currentUser else { return }
+        
+        // 1. 标记为已处理并关闭弹窗
+        processedRequestIds.insert(request.requestId)
+        self.pendingRequest = nil
+        self.isLoading = true
+        
+        // 2. 构建请求
+        let url = URL(string: "http://pcfs.eno.ink:20000/api/2fa/app/approve")!
+        var requestObj = URLRequest(url: url)
+        requestObj.httpMethod = "POST"
+        requestObj.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let body: [String: String] = [
+            "username": user.username,
+            "app_id": appId,
+            "token": user.apptoken,
+            "requestId": request.requestId,
+            "action": action
+        ]
+        
+        requestObj.httpBody = try? JSONEncoder().encode(body)
+        
+        // 3. 发送
+        URLSession.shared.dataTask(with: requestObj) { [weak self] data, _, error in
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                if let error = error {
+                    self?.errorMessage = "操作失败: \(error.localizedDescription)"
+                    // 如果网络失败，从已处理集合中移除，以便下次重试（可选）
+                    self?.processedRequestIds.remove(request.requestId) 
+                    return
+                }
+                
+                // 解析结果
+                if let data = data {
+                    do {
+                        let res = try JSONDecoder().decode(TwoFAActionResponse.self, from: data)
+                        if !res.success {
+                            self?.errorMessage = res.error ?? "服务器返回错误"
+                        }
+                    } catch {
+                        self?.errorMessage = "解析响应失败"
+                    }
+                }
+            }
+        }.resume()
+    }
+
     // MARK: - 启动官方登录流程
     func startSignIn() {
         var components = URLComponents(string: "http://pcfs.eno.ink:20000/app/oauth")
@@ -102,6 +208,7 @@ class AuthManager: NSObject, ObservableObject {
     func logout() {
         currentUser = nil
         UserDefaults.standard.removeObject(forKey: "BloretUserSaved")
+        stopPolling() // 停止轮询
     }
     
     // 持久化存储
@@ -110,12 +217,14 @@ class AuthManager: NSObject, ObservableObject {
         if let encoded = try? JSONEncoder().encode(user) {
             UserDefaults.standard.set(encoded, forKey: "BloretUserSaved")
         }
+        startPolling() // 登录成功后开始轮询
     }
     
     private func loadUser() {
         if let data = UserDefaults.standard.data(forKey: "BloretUserSaved"),
            let user = try? JSONDecoder().decode(BloretUser.self, from: data) {
             self.currentUser = user
+            startPolling() // App 启动加载用户后开始轮询
         }
     }
 }

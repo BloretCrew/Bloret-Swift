@@ -69,6 +69,19 @@ struct HomeView: View {
         .onAppear {
             if viewModel.serverData == nil { viewModel.fetchServerInfo() }
         }
+        // 监听 2FA 请求弹窗
+        .alert(item: $authManager.pendingRequest) { request in
+            Alert(
+                title: Text("尝试登录请求"),
+                message: Text("检测到网页端登录请求\nIP: \(request.ip)\n设备: \(request.device)"),
+                primaryButton: .default(Text("允许登录"), action: {
+                    authManager.respondToRequest(request: request, action: "approve")
+                }),
+                secondaryButton: .destructive(Text("拒绝"), action: {
+                    authManager.respondToRequest(request: request, action: "reject")
+                })
+            )
+        }
     }
     
     // MARK: - 下面是你的 UI 组件 (保持不变)

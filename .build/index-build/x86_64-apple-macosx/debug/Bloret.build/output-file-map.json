@@ -1,0 +1,110 @@
+{
+  "": {
+    "swift-dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/master.swiftdeps"
+  },
+  "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp.swift": {
+    "dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretApp.d",
+    "object": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretApp.swift.o",
+    "swiftmodule": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretApp~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretApp.swiftdeps",
+    "diagnostics": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretApp.dia"
+  },
+  "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretApp/AuthManager.swift": {
+    "dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/AuthManager.d",
+    "object": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/AuthManager.swift.o",
+    "swiftmodule": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/AuthManager~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/AuthManager.swiftdeps",
+    "diagnostics": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/AuthManager.dia"
+  },
+  "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretApp/BloretApp.swift": {
+    "dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretApp.d",
+    "object": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretApp.swift.o",
+    "swiftmodule": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretApp~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretApp.swiftdeps",
+    "diagnostics": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretApp.dia"
+  },
+  "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretApp/BlorikoView.swift": {
+    "dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BlorikoView.d",
+    "object": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BlorikoView.swift.o",
+    "swiftmodule": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BlorikoView~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BlorikoView.swiftdeps",
+    "diagnostics": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BlorikoView.dia"
+  },
+  "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretApp/BlorikoViewModel.swift": {
+    "dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BlorikoViewModel.d",
+    "object": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BlorikoViewModel.swift.o",
+    "swiftmodule": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BlorikoViewModel~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BlorikoViewModel.swiftdeps",
+    "diagnostics": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BlorikoViewModel.dia"
+  },
+  "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretApp/HomeView.swift": {
+    "dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/HomeView.d",
+    "object": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/HomeView.swift.o",
+    "swiftmodule": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/HomeView~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/HomeView.swiftdeps",
+    "diagnostics": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/HomeView.dia"
+  },
+  "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretApp/Models.swift": {
+    "dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/Models.d",
+    "object": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/Models.swift.o",
+    "swiftmodule": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/Models~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/Models.swiftdeps",
+    "diagnostics": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/Models.dia"
+  },
+  "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretApp/ServerViewModel.swift": {
+    "dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/ServerViewModel.d",
+    "object": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/ServerViewModel.swift.o",
+    "swiftmodule": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/ServerViewModel~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/ServerViewModel.swiftdeps",
+    "diagnostics": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/ServerViewModel.dia"
+  },
+  "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretAppTests/BloretAppTests.swift": {
+    "dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretAppTests.d",
+    "object": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretAppTests.swift.o",
+    "swiftmodule": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretAppTests~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretAppTests.swiftdeps",
+    "diagnostics": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretAppTests.dia"
+  },
+  "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretAppUITests/BloretAppUITests.swift": {
+    "dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretAppUITests.d",
+    "object": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretAppUITests.swift.o",
+    "swiftmodule": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretAppUITests~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretAppUITests.swiftdeps",
+    "diagnostics": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretAppUITests.dia"
+  },
+  "/Volumes/Detrital/Work/git/Bloret-Swift/BloretApp/BloretAppUITests/BloretAppUITestsLaunchTests.swift": {
+    "dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretAppUITestsLaunchTests.d",
+    "object": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretAppUITestsLaunchTests.swift.o",
+    "swiftmodule": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretAppUITestsLaunchTests~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretAppUITestsLaunchTests.swiftdeps",
+    "diagnostics": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BloretAppUITestsLaunchTests.dia"
+  },
+  "/Volumes/Detrital/Work/git/Bloret-Swift/BlorikoView.swift": {
+    "dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BlorikoView.d",
+    "object": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BlorikoView.swift.o",
+    "swiftmodule": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BlorikoView~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BlorikoView.swiftdeps",
+    "diagnostics": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/BlorikoView.dia"
+  },
+  "/Volumes/Detrital/Work/git/Bloret-Swift/HomeView.swift": {
+    "dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/HomeView.d",
+    "object": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/HomeView.swift.o",
+    "swiftmodule": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/HomeView~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/HomeView.swiftdeps",
+    "diagnostics": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/HomeView.dia"
+  },
+  "/Volumes/Detrital/Work/git/Bloret-Swift/Models.swift": {
+    "dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/Models.d",
+    "object": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/Models.swift.o",
+    "swiftmodule": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/Models~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/Models.swiftdeps",
+    "diagnostics": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/Models.dia"
+  },
+  "/Volumes/Detrital/Work/git/Bloret-Swift/ServerViewModel.swift": {
+    "dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/ServerViewModel.d",
+    "object": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/ServerViewModel.swift.o",
+    "swiftmodule": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/ServerViewModel~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/ServerViewModel.swiftdeps",
+    "diagnostics": "/Volumes/Detrital/Work/git/Bloret-Swift/.build/index-build/x86_64-apple-macosx/debug/Bloret.build/ServerViewModel.dia"
+  }
+}
