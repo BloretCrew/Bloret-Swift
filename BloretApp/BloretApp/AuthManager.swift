@@ -1,10 +1,12 @@
 import SwiftUI
-import Combine // ✅ 修复: 必须引入这个框架才能使用 ObservableObject
+import Combine
 import AuthenticationServices
-import LocalAuthentication // ✅ 新增: 用于 Face ID/Touch ID
+import LocalAuthentication
+import WatchConnectivity // ✅ 新增: 引入 WatchConnectivity
 
 // MARK: - 用户模型
-struct BloretUser: Codable {
+// ✅ 修复: 添加 Equatable 协议，以便 SwiftUI 的 onChange 可以比较用户变化
+struct BloretUser: Codable, Equatable {
     let username: String
     let email: String?
     let apptoken: String
@@ -20,29 +22,34 @@ class AuthManager: NSObject, ObservableObject {
     private let appId = "BloretApp"
     private let appSecret = "caFzuv-havqe3-hipcug"
     
-    // ⚠️ 确保你在 Info.plist -> URL Types 里配置了 bloretapp
+    #if os(iOS)
     let redirectScheme = "bloretapp"
     let redirectUri = "bloretapp://auth"
-    
     private var authSession: ASWebAuthenticationSession?
+    #endif
     
     // 2FA 相关状态
-    @Published var pendingRequest: TwoFARequestInfo? // 当前待处理的请求
+    @Published var pendingRequest: TwoFARequestInfo?
     private var pollingTimer: Timer?
-    private var processedRequestIds: Set<String> = [] // 记录已处理的 ID，防止重复弹窗
+    private var processedRequestIds: Set<String> = []
     
     override init() {
         super.init()
+        // 1. 激活 WCSession
+        if WCSession.isSupported() {
+            WCSession.default.delegate = self
+            WCSession.default.activate()
+        }
+        // 2. 加载用户并开启轮询
         loadUser()
     }
     
     // MARK: - 2FA 轮询逻辑
-    
     private func startPolling() {
-        stopPolling() // 防止重复开启
+        stopPolling()
         guard currentUser != nil else { return }
         
-        // 每 5 秒轮询一次
+        // 5秒轮询
         pollingTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { [weak self] _ in
             self?.checkPending2FARequests()
         }
@@ -53,11 +60,9 @@ class AuthManager: NSObject, ObservableObject {
         pollingTimer = nil
     }
     
-    // 检查是否有待处理请求
     private func checkPending2FARequests() {
         guard let user = currentUser else { return }
         
-        // 文档 API: http://pcfs.eno.ink:20000/api/2fa/app/pending
         var components = URLComponents(string: "http://pcfs.eno.ink:20000/api/2fa/app/pending")
         components?.queryItems = [
             URLQueryItem(name: "username", value: user.username),
@@ -69,13 +74,15 @@ class AuthManager: NSObject, ObservableObject {
         
         URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
             guard let self = self, let data = data, error == nil else { return }
-            
             do {
                 let response = try JSONDecoder().decode(TwoFAPendingResponse.self, from: data)
                 if response.success, let request = response.requests.first {
                     DispatchQueue.main.async {
-                        // 如果存在请求，且未处理过，且当前没有正在显示的弹窗
                         if !self.processedRequestIds.contains(request.requestId) && self.pendingRequest == nil {
+                            // WatchOS 上可以通过 WKInterfaceDevice.current().play(.notification) 震动
+                            #if os(watchOS)
+                            WKInterfaceDevice.current().play(.notification)
+                            #endif
                             self.pendingRequest = request
                         }
                     }
@@ -86,34 +93,47 @@ class AuthManager: NSObject, ObservableObject {
         }.resume()
     }
     
-    // 新增: 生物识别验证 (Face ID / Touch ID)
+    // MARK: - 生物识别验证 (支持 iOS FaceID 和 Watch Passcode)
     func authenticateUser(completion: @escaping (Bool) -> Void) {
         let context = LAContext()
         var error: NSError?
         
-        // ✅ 修复: 使用 .deviceOwnerAuthenticationWithBiometrics 强制优先使用 Face ID
-        // 如果只用 .deviceOwnerAuthentication，系统可能会直接弹密码框
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "需要验证身份以批准网页端登录"
-            
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+        #if os(iOS)
+        // iOS: 优先 Face ID
+        let policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics
+        #else
+        // WatchOS: 使用密码/解锁状态 (.deviceOwnerAuthentication)
+        // Watch 没有 FaceID 硬件 API
+        let policy: LAPolicy = .deviceOwnerAuthentication
+        #endif
+        
+        if context.canEvaluatePolicy(policy, error: &error) {
+            let reason = "验证身份以批准登录"
+            context.evaluatePolicy(policy, localizedReason: reason) { success, _ in
                 DispatchQueue.main.async {
                     if success {
                         completion(true)
                     } else {
-                        // 如果 Face ID 失败（比如多次错误），尝试回退到密码验证
-                        // 注意：如果不想回退到密码，可以直接 completion(false)
+                        // iOS 失败回退逻辑
+                        #if os(iOS)
                         self.authenticateWithPasscode(context: context, completion: completion)
+                        #else
+                        completion(false)
+                        #endif
                     }
                 }
             }
         } else {
-            // 如果设备根本不支持生物识别（或者没有设置 Face ID），则尝试直接用密码
+            #if os(iOS)
             authenticateWithPasscode(context: context, completion: completion)
+            #else
+            // Watch 如果没有设置密码，默认允许
+            DispatchQueue.main.async { completion(true) }
+            #endif
         }
     }
     
-    // 辅助方法：密码验证回退
+    #if os(iOS)
     private func authenticateWithPasscode(context: LAContext, completion: @escaping (Bool) -> Void) {
         var error: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
@@ -121,21 +141,19 @@ class AuthManager: NSObject, ObservableObject {
                 DispatchQueue.main.async { completion(success) }
             }
         } else {
-            // 既没有 Face ID 也没有密码（模拟器或未设置密码），直接通过或失败
             DispatchQueue.main.async { completion(true) }
         }
     }
+    #endif
 
-    // 响应请求 (允许或拒绝)
+    // MARK: - 响应请求
     func respondToRequest(request: TwoFARequestInfo, action: String) {
         guard let user = currentUser else { return }
         
-        // 1. 标记为已处理并关闭弹窗
         processedRequestIds.insert(request.requestId)
         self.pendingRequest = nil
         self.isLoading = true
         
-        // 2. 构建请求
         let url = URL(string: "http://pcfs.eno.ink:20000/api/2fa/app/approve")!
         var requestObj = URLRequest(url: url)
         requestObj.httpMethod = "POST"
@@ -151,33 +169,28 @@ class AuthManager: NSObject, ObservableObject {
         
         requestObj.httpBody = try? JSONEncoder().encode(body)
         
-        // 3. 发送
         URLSession.shared.dataTask(with: requestObj) { [weak self] data, _, error in
             DispatchQueue.main.async {
                 self?.isLoading = false
                 if let error = error {
                     self?.errorMessage = "操作失败: \(error.localizedDescription)"
-                    // 如果网络失败，从已处理集合中移除，以便下次重试（可选）
-                    self?.processedRequestIds.remove(request.requestId) 
+                    self?.processedRequestIds.remove(request.requestId)
                     return
                 }
-                
-                // 解析结果
                 if let data = data {
                     do {
                         let res = try JSONDecoder().decode(TwoFAActionResponse.self, from: data)
                         if !res.success {
-                            self?.errorMessage = res.error ?? "服务器返回错误"
+                            self?.errorMessage = res.error ?? "错误"
                         }
-                    } catch {
-                        self?.errorMessage = "解析响应失败"
-                    }
+                    } catch { self?.errorMessage = "解析失败" }
                 }
             }
         }.resume()
     }
 
-    // MARK: - 启动官方登录流程
+    // MARK: - 登录 (仅 iOS)
+    #if os(iOS)
     func startSignIn() {
         var components = URLComponents(string: "http://pcfs.eno.ink:20000/app/oauth")
         components?.queryItems = [
@@ -188,10 +201,7 @@ class AuthManager: NSObject, ObservableObject {
         guard let authURL = components?.url else { return }
         
         authSession = ASWebAuthenticationSession(url: authURL, callbackURLScheme: redirectScheme) { [weak self] callbackURL, error in
-            if let error = error {
-                print("Auth Error: \(error.localizedDescription)")
-                return
-            }
+            if let error = error { print("Auth Error: \(error.localizedDescription)"); return }
             guard let callbackURL = callbackURL else { return }
             
             if let queryItems = URLComponents(string: callbackURL.absoluteString)?.queryItems,
@@ -204,10 +214,8 @@ class AuthManager: NSObject, ObservableObject {
         authSession?.start()
     }
     
-    // Step 2: 使用 Code 换取 Token
     func exchangeCodeForToken(code: String) {
         guard let url = URL(string: "http://pcfs.eno.ink:20000/app/verify") else { return }
-        
         DispatchQueue.main.async { self.isLoading = true }
         
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
@@ -222,12 +230,7 @@ class AuthManager: NSObject, ObservableObject {
         URLSession.shared.dataTask(with: requestUrl) { [weak self] data, response, error in
             DispatchQueue.main.async {
                 self?.isLoading = false
-                
-                if let error = error {
-                    self?.errorMessage = "登录失败: \(error.localizedDescription)"
-                    return
-                }
-                
+                if let _ = error { self?.errorMessage = "登录失败"; return }
                 guard let data = data else { return }
                 
                 if let jsonString = String(data: data, encoding: .utf8), jsonString.contains("error") {
@@ -238,42 +241,119 @@ class AuthManager: NSObject, ObservableObject {
                 do {
                     let user = try JSONDecoder().decode(BloretUser.self, from: data)
                     self?.saveUser(user)
-                } catch {
-                    self?.errorMessage = "解析用户信息失败"
-                }
+                } catch { self?.errorMessage = "解析失败" }
             }
         }.resume()
     }
+    #endif
     
-    // 登出
+    // MARK: - 登出 & 存储
+    
     func logout() {
         currentUser = nil
         UserDefaults.standard.removeObject(forKey: "BloretUserSaved")
-        stopPolling() // 停止轮询
+        stopPolling()
+        // 同步登出状态到 Watch
+        syncUserToWatch(nil)
     }
     
-    // 持久化存储
-    private func saveUser(_ user: BloretUser) {
+    // 公开给 iOS 端调用
+    func saveUser(_ user: BloretUser) {
+        _saveUserInternal(user)
+        // 同步登录状态到 Watch
+        syncUserToWatch(user)
+    }
+    
+    // 内部存储逻辑
+    private func _saveUserInternal(_ user: BloretUser) {
         self.currentUser = user
         if let encoded = try? JSONEncoder().encode(user) {
             UserDefaults.standard.set(encoded, forKey: "BloretUserSaved")
         }
-        startPolling() // 登录成功后开始轮询
+        startPolling()
     }
     
     private func loadUser() {
         if let data = UserDefaults.standard.data(forKey: "BloretUserSaved"),
            let user = try? JSONDecoder().decode(BloretUser.self, from: data) {
             self.currentUser = user
-            startPolling() // App 启动加载用户后开始轮询
+            startPolling()
+            // ✅ 修复: App 启动加载完用户后，尝试同步到 Watch
+            // 注意：此时 Session 可能还没 activated，所以会在下面的 delegate 中再次尝试
+            syncUserToWatch(user)
+        }
+    }
+    
+    // MARK: - Watch Connectivity Sync
+    
+    private func syncUserToWatch(_ user: BloretUser?) {
+        #if os(iOS)
+        // 检查 Session 是否激活
+        guard WCSession.default.activationState == .activated else {
+            print("Sync failed: Session not activated")
+            return
+        }
+        
+        var context: [String: Any] = [:]
+        if let user = user, let data = try? JSONEncoder().encode(user) {
+            context["user"] = data
+        } else {
+            context["user"] = nil // 删除
+        }
+        
+        do {
+            try WCSession.default.updateApplicationContext(context)
+            print("Sync sent to Watch: \(user?.username ?? "Logout")")
+        } catch {
+            print("Sync Error: \(error)")
+        }
+        #endif
+    }
+}
+
+// MARK: - Watch Connectivity Delegate
+extension AuthManager: WCSessionDelegate {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        // ✅ 修复: Session 激活成功后，如果当前已登录，立即把用户信息发给 Watch
+        // 这解决了“iPhone 已登录但 Watch 没数据”的问题
+        DispatchQueue.main.async {
+            #if os(iOS)
+            if activationState == .activated, let user = self.currentUser {
+                self.syncUserToWatch(user)
+            }
+            #endif
+        }
+    }
+    
+    #if os(iOS)
+    func sessionDidBecomeInactive(_ session: WCSession) {}
+    func sessionDidDeactivate(_ session: WCSession) {
+        WCSession.default.activate() // 重新激活
+    }
+    #endif
+    
+    // 接收 Application Context (Watch 接收 iOS 的数据)
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        DispatchQueue.main.async {
+            if let userData = applicationContext["user"] as? Data {
+                // 收到用户数据 -> 登录
+                if let user = try? JSONDecoder().decode(BloretUser.self, from: userData) {
+                    self._saveUserInternal(user)
+                }
+            } else {
+                // 没有用户数据 -> 登出
+                self.currentUser = nil
+                UserDefaults.standard.removeObject(forKey: "BloretUserSaved")
+                self.stopPolling()
+            }
         }
     }
 }
 
-// MARK: - 扩展：告诉系统在哪里弹窗 (修复 iOS 15+ 警告)
+// MARK: - 扩展：告诉系统在哪里弹窗 (iOS only)
+#if os(iOS)
 extension AuthManager: ASWebAuthenticationPresentationContextProviding {
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-        // ✅ 修复: 使用 UIWindowScene 获取当前窗口
         return UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
             .first?
@@ -281,3 +361,4 @@ extension AuthManager: ASWebAuthenticationPresentationContextProviding {
             .first { $0.isKeyWindow } ?? ASPresentationAnchor()
     }
 }
+#endif

@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		04AAA4E22F1BC91C00775C79 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04AAA4E12F1BC91C00775C79 /* WidgetKit.framework */; };
+		04AAA4E42F1BC91C00775C79 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04AAA4E32F1BC91C00775C79 /* SwiftUI.framework */; };
+		04AAA4F32F1BC92200775C79 /* BloretWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 04AAA4DF2F1BC91C00775C79 /* BloretWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		04F46AE62F1BB73E0016D378 /* BloretWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 04F46AC62F1BB72F0016D378 /* BloretWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		0445E9132F0BC31A0080AB68 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,15 +28,105 @@
 			remoteGlobalIDString = 0445E9042F0BC3130080AB68;
 			remoteInfo = BloretApp;
 		};
+		04AAA4F12F1BC92200775C79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0445E8FD2F0BC3130080AB68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04AAA4DE2F1BC91C00775C79;
+			remoteInfo = BloretWidgetExtension;
+		};
+		04F46AD32F1BB73D0016D378 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0445E8FD2F0BC3130080AB68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04F46AC52F1BB72F0016D378;
+			remoteInfo = "BloretWatch Watch App";
+		};
+		04F46ADD2F1BB73D0016D378 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0445E8FD2F0BC3130080AB68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04F46AC52F1BB72F0016D378;
+			remoteInfo = "BloretWatch Watch App";
+		};
+		04F46AE42F1BB73E0016D378 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0445E8FD2F0BC3130080AB68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04F46AC52F1BB72F0016D378;
+			remoteInfo = "BloretWatch Watch App";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		04AAA4F82F1BC92200775C79 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				04AAA4F32F1BC92200775C79 /* BloretWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F46AEA2F1BB73E0016D378 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				04F46AE62F1BB73E0016D378 /* BloretWatch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0445E9052F0BC3130080AB68 /* BloretApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BloretApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0445E9122F0BC31A0080AB68 /* BloretAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BloretAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0445E91C2F0BC31A0080AB68 /* BloretAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BloretAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04AAA4DF2F1BC91C00775C79 /* BloretWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BloretWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		04AAA4E12F1BC91C00775C79 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		04AAA4E32F1BC91C00775C79 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		04F46AC62F1BB72F0016D378 /* BloretWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BloretWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F46AD22F1BB73D0016D378 /* BloretWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BloretWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F46ADC2F1BB73D0016D378 /* BloretWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BloretWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		04AAA4D32F1BC19B00775C79 /* Exceptions for "BloretApp" folder in "BloretWatch Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AuthManager.swift,
+				BlorikoViewModel.swift,
+				Models.swift,
+				ServerViewModel.swift,
+			);
+			target = 04F46AC52F1BB72F0016D378 /* BloretWatch Watch App */;
+		};
+		04AAA4DA2F1BC67C00775C79 /* Exceptions for "BloretWatch Watch App" folder in "BloretWatch Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 04F46AC52F1BB72F0016D378 /* BloretWatch Watch App */;
+		};
+		04AAA4F72F1BC92200775C79 /* Exceptions for "BloretWidget" folder in "BloretWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 04AAA4DE2F1BC91C00775C79 /* BloretWidgetExtension */;
+		};
+		04AAA4FA2F1BC93900775C79 /* Exceptions for "BloretApp" folder in "BloretWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models.swift,
+			);
+			target = 04AAA4DE2F1BC91C00775C79 /* BloretWidgetExtension */;
+		};
 		04E606002F1B04BE005752B0 /* Exceptions for "BloretApp" folder in "BloretApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -44,6 +141,8 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				04E606002F1B04BE005752B0 /* Exceptions for "BloretApp" folder in "BloretApp" target */,
+				04AAA4D32F1BC19B00775C79 /* Exceptions for "BloretApp" folder in "BloretWatch Watch App" target */,
+				04AAA4FA2F1BC93900775C79 /* Exceptions for "BloretApp" folder in "BloretWidgetExtension" target */,
 			);
 			path = BloretApp;
 			sourceTree = "<group>";
@@ -56,6 +155,32 @@
 		0445E91F2F0BC31A0080AB68 /* BloretAppUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BloretAppUITests;
+			sourceTree = "<group>";
+		};
+		04AAA4E52F1BC91C00775C79 /* BloretWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				04AAA4F72F1BC92200775C79 /* Exceptions for "BloretWidget" folder in "BloretWidgetExtension" target */,
+			);
+			path = BloretWidget;
+			sourceTree = "<group>";
+		};
+		04F46AC72F1BB72F0016D378 /* BloretWatch Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				04AAA4DA2F1BC67C00775C79 /* Exceptions for "BloretWatch Watch App" folder in "BloretWatch Watch App" target */,
+			);
+			path = "BloretWatch Watch App";
+			sourceTree = "<group>";
+		};
+		04F46AD52F1BB73D0016D378 /* BloretWatch Watch AppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "BloretWatch Watch AppTests";
+			sourceTree = "<group>";
+		};
+		04F46ADF2F1BB73D0016D378 /* BloretWatch Watch AppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "BloretWatch Watch AppUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -82,6 +207,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04AAA4DC2F1BC91C00775C79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04AAA4E42F1BC91C00775C79 /* SwiftUI.framework in Frameworks */,
+				04AAA4E22F1BC91C00775C79 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F46AC32F1BB72F0016D378 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F46ACF2F1BB73D0016D378 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F46AD92F1BB73D0016D378 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -91,6 +246,11 @@
 				0445E9072F0BC3130080AB68 /* BloretApp */,
 				0445E9152F0BC31A0080AB68 /* BloretAppTests */,
 				0445E91F2F0BC31A0080AB68 /* BloretAppUITests */,
+				04F46AC72F1BB72F0016D378 /* BloretWatch Watch App */,
+				04F46AD52F1BB73D0016D378 /* BloretWatch Watch AppTests */,
+				04F46ADF2F1BB73D0016D378 /* BloretWatch Watch AppUITests */,
+				04AAA4E52F1BC91C00775C79 /* BloretWidget */,
+				04AAA4E02F1BC91C00775C79 /* Frameworks */,
 				0445E9062F0BC3130080AB68 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,8 +261,21 @@
 				0445E9052F0BC3130080AB68 /* BloretApp.app */,
 				0445E9122F0BC31A0080AB68 /* BloretAppTests.xctest */,
 				0445E91C2F0BC31A0080AB68 /* BloretAppUITests.xctest */,
+				04F46AC62F1BB72F0016D378 /* BloretWatch Watch App.app */,
+				04F46AD22F1BB73D0016D378 /* BloretWatch Watch AppTests.xctest */,
+				04F46ADC2F1BB73D0016D378 /* BloretWatch Watch AppUITests.xctest */,
+				04AAA4DF2F1BC91C00775C79 /* BloretWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		04AAA4E02F1BC91C00775C79 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04AAA4E12F1BC91C00775C79 /* WidgetKit.framework */,
+				04AAA4E32F1BC91C00775C79 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,10 +288,12 @@
 				0445E9012F0BC3130080AB68 /* Sources */,
 				0445E9022F0BC3130080AB68 /* Frameworks */,
 				0445E9032F0BC3130080AB68 /* Resources */,
+				04F46AEA2F1BB73E0016D378 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				04F46AE52F1BB73E0016D378 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				0445E9072F0BC3130080AB68 /* BloretApp */,
@@ -176,6 +351,98 @@
 			productReference = 0445E91C2F0BC31A0080AB68 /* BloretAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		04AAA4DE2F1BC91C00775C79 /* BloretWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04AAA4F42F1BC92200775C79 /* Build configuration list for PBXNativeTarget "BloretWidgetExtension" */;
+			buildPhases = (
+				04AAA4DB2F1BC91C00775C79 /* Sources */,
+				04AAA4DC2F1BC91C00775C79 /* Frameworks */,
+				04AAA4DD2F1BC91C00775C79 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				04AAA4E52F1BC91C00775C79 /* BloretWidget */,
+			);
+			name = BloretWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = BloretWidgetExtension;
+			productReference = 04AAA4DF2F1BC91C00775C79 /* BloretWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		04F46AC52F1BB72F0016D378 /* BloretWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04F46AE72F1BB73E0016D378 /* Build configuration list for PBXNativeTarget "BloretWatch Watch App" */;
+			buildPhases = (
+				04F46AC22F1BB72F0016D378 /* Sources */,
+				04F46AC32F1BB72F0016D378 /* Frameworks */,
+				04F46AC42F1BB72F0016D378 /* Resources */,
+				04AAA4F82F1BC92200775C79 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04AAA4F22F1BC92200775C79 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				04F46AC72F1BB72F0016D378 /* BloretWatch Watch App */,
+			);
+			name = "BloretWatch Watch App";
+			packageProductDependencies = (
+			);
+			productName = "BloretWatch Watch App";
+			productReference = 04F46AC62F1BB72F0016D378 /* BloretWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		04F46AD12F1BB73D0016D378 /* BloretWatch Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04F46AEB2F1BB73E0016D378 /* Build configuration list for PBXNativeTarget "BloretWatch Watch AppTests" */;
+			buildPhases = (
+				04F46ACE2F1BB73D0016D378 /* Sources */,
+				04F46ACF2F1BB73D0016D378 /* Frameworks */,
+				04F46AD02F1BB73D0016D378 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04F46AD42F1BB73D0016D378 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				04F46AD52F1BB73D0016D378 /* BloretWatch Watch AppTests */,
+			);
+			name = "BloretWatch Watch AppTests";
+			packageProductDependencies = (
+			);
+			productName = "BloretWatch Watch AppTests";
+			productReference = 04F46AD22F1BB73D0016D378 /* BloretWatch Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		04F46ADB2F1BB73D0016D378 /* BloretWatch Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04F46AEE2F1BB73E0016D378 /* Build configuration list for PBXNativeTarget "BloretWatch Watch AppUITests" */;
+			buildPhases = (
+				04F46AD82F1BB73D0016D378 /* Sources */,
+				04F46AD92F1BB73D0016D378 /* Frameworks */,
+				04F46ADA2F1BB73D0016D378 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04F46ADE2F1BB73D0016D378 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				04F46ADF2F1BB73D0016D378 /* BloretWatch Watch AppUITests */,
+			);
+			name = "BloretWatch Watch AppUITests";
+			packageProductDependencies = (
+			);
+			productName = "BloretWatch Watch AppUITests";
+			productReference = 04F46ADC2F1BB73D0016D378 /* BloretWatch Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -198,6 +465,20 @@
 						CreatedOnToolsVersion = 26.2;
 						TestTargetID = 0445E9042F0BC3130080AB68;
 					};
+					04AAA4DE2F1BC91C00775C79 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					04F46AC52F1BB72F0016D378 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					04F46AD12F1BB73D0016D378 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 04F46AC52F1BB72F0016D378;
+					};
+					04F46ADB2F1BB73D0016D378 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 04F46AC52F1BB72F0016D378;
+					};
 				};
 			};
 			buildConfigurationList = 0445E9002F0BC3130080AB68 /* Build configuration list for PBXProject "BloretApp" */;
@@ -217,6 +498,10 @@
 				0445E9042F0BC3130080AB68 /* BloretApp */,
 				0445E9112F0BC31A0080AB68 /* BloretAppTests */,
 				0445E91B2F0BC31A0080AB68 /* BloretAppUITests */,
+				04F46AC52F1BB72F0016D378 /* BloretWatch Watch App */,
+				04F46AD12F1BB73D0016D378 /* BloretWatch Watch AppTests */,
+				04F46ADB2F1BB73D0016D378 /* BloretWatch Watch AppUITests */,
+				04AAA4DE2F1BC91C00775C79 /* BloretWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -237,6 +522,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0445E91A2F0BC31A0080AB68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04AAA4DD2F1BC91C00775C79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F46AC42F1BB72F0016D378 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F46AD02F1BB73D0016D378 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F46ADA2F1BB73D0016D378 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -267,6 +580,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04AAA4DB2F1BC91C00775C79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F46AC22F1BB72F0016D378 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F46ACE2F1BB73D0016D378 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F46AD82F1BB73D0016D378 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -279,6 +620,26 @@
 			isa = PBXTargetDependency;
 			target = 0445E9042F0BC3130080AB68 /* BloretApp */;
 			targetProxy = 0445E91D2F0BC31A0080AB68 /* PBXContainerItemProxy */;
+		};
+		04AAA4F22F1BC92200775C79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04AAA4DE2F1BC91C00775C79 /* BloretWidgetExtension */;
+			targetProxy = 04AAA4F12F1BC92200775C79 /* PBXContainerItemProxy */;
+		};
+		04F46AD42F1BB73D0016D378 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04F46AC52F1BB72F0016D378 /* BloretWatch Watch App */;
+			targetProxy = 04F46AD32F1BB73D0016D378 /* PBXContainerItemProxy */;
+		};
+		04F46ADE2F1BB73D0016D378 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04F46AC52F1BB72F0016D378 /* BloretWatch Watch App */;
+			targetProxy = 04F46ADD2F1BB73D0016D378 /* PBXContainerItemProxy */;
+		};
+		04F46AE52F1BB73E0016D378 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04F46AC52F1BB72F0016D378 /* BloretWatch Watch App */;
+			targetProxy = 04F46AE42F1BB73E0016D378 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -565,6 +926,230 @@
 			};
 			name = Release;
 		};
+		04AAA4F52F1BC92200775C79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 54U7879W55;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BloretWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BloretWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Bloret.SwiftApp.watchkitapp.BloretWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		04AAA4F62F1BC92200775C79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 54U7879W55;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BloretWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BloretWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Bloret.SwiftApp.watchkitapp.BloretWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
+		04F46AE82F1BB73E0016D378 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 54U7879W55;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "BloretWatch Watch App/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Bloret;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Bloret.SwiftApp;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Bloret.SwiftApp.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.7;
+			};
+			name = Debug;
+		};
+		04F46AE92F1BB73E0016D378 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 54U7879W55;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "BloretWatch Watch App/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Bloret;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Bloret.SwiftApp;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Bloret.SwiftApp.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.7;
+			};
+			name = Release;
+		};
+		04F46AEC2F1BB73E0016D378 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 54U7879W55;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Bloret.BloretWatch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BloretWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BloretWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		04F46AED2F1BB73E0016D378 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 54U7879W55;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Bloret.BloretWatch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BloretWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BloretWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
+		04F46AEF2F1BB73E0016D378 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 54U7879W55;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Bloret.BloretWatch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "BloretWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		04F46AF02F1BB73E0016D378 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 54U7879W55;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Bloret.BloretWatch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "BloretWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -600,6 +1185,42 @@
 			buildConfigurations = (
 				0445E92D2F0BC31A0080AB68 /* Debug */,
 				0445E92E2F0BC31A0080AB68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04AAA4F42F1BC92200775C79 /* Build configuration list for PBXNativeTarget "BloretWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04AAA4F52F1BC92200775C79 /* Debug */,
+				04AAA4F62F1BC92200775C79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04F46AE72F1BB73E0016D378 /* Build configuration list for PBXNativeTarget "BloretWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F46AE82F1BB73E0016D378 /* Debug */,
+				04F46AE92F1BB73E0016D378 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04F46AEB2F1BB73E0016D378 /* Build configuration list for PBXNativeTarget "BloretWatch Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F46AEC2F1BB73E0016D378 /* Debug */,
+				04F46AED2F1BB73E0016D378 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04F46AEE2F1BB73E0016D378 /* Build configuration list for PBXNativeTarget "BloretWatch Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F46AEF2F1BB73E0016D378 /* Debug */,
+				04F46AF02F1BB73E0016D378 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
