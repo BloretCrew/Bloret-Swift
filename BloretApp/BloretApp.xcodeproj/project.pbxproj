@@ -29,9 +29,22 @@
 		0445E91C2F0BC31A0080AB68 /* BloretAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BloretAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		04E606002F1B04BE005752B0 /* Exceptions for "BloretApp" folder in "BloretApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0445E9042F0BC3130080AB68 /* BloretApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0445E9072F0BC3130080AB68 /* BloretApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				04E606002F1B04BE005752B0 /* Exceptions for "BloretApp" folder in "BloretApp" target */,
+			);
 			path = BloretApp;
 			sourceTree = "<group>";
 		};
