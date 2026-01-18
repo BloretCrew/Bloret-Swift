@@ -1,7 +1,7 @@
 from PIL import Image
 import os
 
-def resize_app_icon(input_path, output_path, size=(100, 100)):
+def resize_app_icon(input_path, output_path, size=(60, 60)):
     try:
         with Image.open(input_path) as img:
             # 转换为带有 Alpha 通道的 RGBA 模式，确保兼容性

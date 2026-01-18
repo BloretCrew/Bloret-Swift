@@ -11,6 +11,7 @@ struct ServerStatusEntry: TimelineEntry {
 // MARK: - 2. 时间线提供者 (Provider)
 struct Provider: TimelineProvider {
     
+    // API 地址
     let apiUrl = URL(string: "http://pcfs.eno.ink:20901/api/getserver?name=Bloret")!
     
     func placeholder(in context: Context) -> ServerStatusEntry {
@@ -42,23 +43,20 @@ struct Provider: TimelineProvider {
     }
 }
 
-// MARK: - 3. 视图 (View) - 支持多种尺寸
+// MARK: - 3. 视图 (View)
 struct BloretWidgetEntryView : View {
     var entry: Provider.Entry
-    
-    // 获取当前组件的类型（圆形、矩形、角标等）
     @Environment(\.widgetFamily) var family
-    
     let maxPlayers: Double = 40.0
     
     var body: some View {
         switch family {
         
-        // 1. 圆形组件 (保持之前的圆环设计)
+        // 1. 圆形 (Circular)
         case .accessoryCircular:
             Gauge(value: Double(entry.playersOnline), in: 0...maxPlayers) {
                 if entry.isOnline {
-                    Image("BloretServer") // ⚠️ 确保图片已缩小至 100x100
+                    Image("BloretServer")
                         .resizable()
                         .scaledToFit()
                         .padding(4)
@@ -66,14 +64,16 @@ struct BloretWidgetEntryView : View {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundColor(.red)
                 }
+            } currentValueLabel: {
+                // 底部文字
+                Text("\(entry.playersOnline)")
             }
             .gaugeStyle(.accessoryCircular)
-            .containerBackground(for: .widget) { AccessoryWidgetBackground() }
+            .containerBackground(for: .widget) { AccessoryWidgetBackground() } // ✅ 已添加
             
-        // 2. 矩形组件 (显示更详细的信息)
+        // 2. 矩形 (Rectangular)
         case .accessoryRectangular:
             HStack(spacing: 8) {
-                // 左侧竖线装饰
                 Rectangle()
                     .fill(entry.isOnline ? Color.purple : Color.red)
                     .frame(width: 4)
@@ -82,7 +82,7 @@ struct BloretWidgetEntryView : View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Bloret Server")
                         .font(.headline)
-                        .widgetAccentable() // 允许被表盘染色
+                        .widgetAccentable()
                     
                     if entry.isOnline {
                         Text("\(entry.playersOnline) / 40 Online")
@@ -96,36 +96,42 @@ struct BloretWidgetEntryView : View {
                 }
                 Spacer()
             }
-            .containerBackground(for: .widget) { AccessoryWidgetBackground() }
+            .containerBackground(for: .widget) { AccessoryWidgetBackground() } // ✅ 已添加
             
-        // 3. 行内组件 (顶部文字，适合 Modular 表盘)
+        // 3. 行内 (Inline) - 即使是纯文字也需要这个修饰符
         case .accessoryInline:
-            if entry.isOnline {
-                Text("Bloret: \(entry.playersOnline) Players")
-            } else {
-                Text("Bloret: Offline")
+            Group {
+                if entry.isOnline {
+                    Text("Bloret: \(entry.playersOnline) Players")
+                } else {
+                    Text("Bloret: Offline")
+                }
             }
+            .containerBackground(for: .widget) { Color.clear } // ✅ 修复: Inline 使用透明背景
             
-        // 4. 角标组件 (适合圆形表盘的四个角)
+        // 4. 角标 (Corner)
         case .accessoryCorner:
-            if entry.isOnline {
-                Image("BloretServer")
-                    .resizable()
-                    .scaledToFit()
-                    .widgetLabel {
-                        Text("\(entry.playersOnline)/40")
-                    }
-            } else {
-                Image(systemName: "xmark.circle.fill")
-                    .widgetLabel {
-                        Text("Offline")
-                    }
+            Group {
+                if entry.isOnline {
+                    Image("BloretServer")
+                        .resizable()
+                        .scaledToFit()
+                        .widgetLabel {
+                            Text("\(entry.playersOnline)")
+                        }
+                } else {
+                    Image(systemName: "xmark.circle.fill")
+                        .widgetLabel {
+                            Text("Offline")
+                        }
+                }
             }
+            .containerBackground(for: .widget) { AccessoryWidgetBackground() } // ✅ 修复: Corner 必须添加
             
-        // 其他未知类型
+        // 其他
         default:
             Text("\(entry.playersOnline)")
-                .containerBackground(for: .widget) { AccessoryWidgetBackground() }
+                .containerBackground(for: .widget) { AccessoryWidgetBackground() } // ✅ 已添加
         }
     }
 }
@@ -141,7 +147,6 @@ struct BloretWidget: Widget {
         }
         .configurationDisplayName("服务器状态")
         .description("查看 Bloret 在线人数")
-        // ✅ 注册支持的所有类型
         .supportedFamilies([
             .accessoryCircular,
             .accessoryRectangular,
@@ -154,14 +159,12 @@ struct BloretWidget: Widget {
 // MARK: - 5. 预览
 struct BloretWidget_Previews: PreviewProvider {
     static var previews: some View {
-        // 预览圆形
         BloretWidgetEntryView(entry: ServerStatusEntry(date: Date(), playersOnline: 12, isOnline: true))
             .previewContext(WidgetPreviewContext(family: .accessoryCircular))
             .previewDisplayName("Circular")
         
-        // 预览矩形
-        BloretWidgetEntryView(entry: ServerStatusEntry(date: Date(), playersOnline: 35, isOnline: true))
-            .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
-            .previewDisplayName("Rectangular")
+        BloretWidgetEntryView(entry: ServerStatusEntry(date: Date(), playersOnline: 12, isOnline: true))
+            .previewContext(WidgetPreviewContext(family: .accessoryCorner))
+            .previewDisplayName("Corner")
     }
 }
